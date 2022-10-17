@@ -14,7 +14,8 @@ async function getServices() {
             const servicesList = list.map((service) => 
                 new Service (
                     service.id,
-                    service.name
+                    service.name,
+                    service.estimated_time,
                 )
             );
             return servicesList;
@@ -30,7 +31,7 @@ async function getServices() {
 };
 
 async function postTicket(serviceId) {
-    const url = APIURL + `${serviceId}`;
+    const url = APIURL + `ticket/${serviceId}`;
 
     try {
         const response = await fetch(url, {
