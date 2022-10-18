@@ -6,10 +6,7 @@ import Layout from './Layout';
 import ServiceType from './ServiceType';
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
-
 import TableItem from './QueuePage.js'
-import { Service } from './Classes/Service';
 
 function App() {
 
@@ -29,7 +26,7 @@ function App() {
 
   //Loads only during the first hydration the data about available services
   useEffect(() => {
-    //loadServices();
+    loadServices();
   }, []);
 
   return (

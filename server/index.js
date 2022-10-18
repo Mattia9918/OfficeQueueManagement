@@ -23,7 +23,9 @@ app.get('/api/service', async (req, res) => {
     const services = await dao.getServices();
     return res.status(200).json(services);
   } catch (err) {
+    console.log(err);
     return res.status(500).json({ error: err });
+    
   }
 });
 

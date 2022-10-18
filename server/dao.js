@@ -1,7 +1,9 @@
 'use strict';
+
 /* Data Access Object (DAO) module for accessing db */
 
 const sqlite = require('sqlite3');
+const { ServiceType } = require('./Classes/ServiceType');
 
 // open the database
 const db = new sqlite.Database('oqm.db', (err) => {
@@ -49,18 +51,17 @@ exports.createServiceType = (service) => {
         });
     });
 }
-<<<<<<< HEAD
 
 
 // get all Services
 exports.getServices = () => {
     return new Promise((resolve, reject) => {
-      const sql = 'SELECT * FROM SERVICE_TYPE  ORDER BY name ASC';
+      const sql = 'SELECT * FROM SERVICE_TYPE ORDER BY name ASC';
       db.all(sql, [], (err, rows) => {
         if (err)
           reject(err);
         else {
-          const services = rows.map(row => new SERVICE_TYPE(row.id, row.name, row.estimated_time));
+          const services = rows.map(row => new ServiceType(row.id, row.name, row.estimated_time));
           resolve(services);
         }
       });
@@ -84,10 +85,10 @@ exports.getSService = (id) => {
   
 
 /* add a new ticket */
-exports.addTicket = (ticket) => {
+exports.postTicket = (serviceId) => {
     return new Promise((resolve, reject) => {
       const sql = 'INSERT INTO TICKET( id, service_type, state, issued_at, counter) VALUES(?, ?, ?, ? ,?)'; // ID replaced as an arrangable itw // can be removed(?)
-      db.run(sql, [ticket.id, ticket.service_type, ticket.state, ticket.issued_at, ticket.counter], function (err) {
+      db.run(sql, [ticket.service_type, ticket.state, ticket.issued_at, ticket.counter], function (err) {
         if (err) reject(err);
         else resolve(this.lastID);
       });
@@ -127,5 +128,3 @@ exports.getSTicket = (id) => {
     });
   };
   
-=======
->>>>>>> a0d4c23494473fefc6b4a4b5383820b7c4007a1a
