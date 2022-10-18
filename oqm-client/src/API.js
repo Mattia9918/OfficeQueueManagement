@@ -58,9 +58,9 @@ async function postTicket(serviceId) {
 };
 
 
-async function getWaitingQueue(type) {
+async function getWaitingQueue(ticketId) {
     try { 
-        const response = await fetch(new URL("queue/"+type,APIURL));
+        const response = await fetch(new URL("queue/"+ticketId,APIURL));
         const queue = await response.json();
         if (response.ok) {
             if(queue)
