@@ -57,5 +57,26 @@ async function postTicket(serviceId) {
     }
 };
 
-const API = { getServices, postTicket };
+
+async function getWaitingQueue(type) {
+    try { 
+        const response = await fetch(new URL("queue/"+type,APIURL));
+        const queue = await response.json();
+        if (response.ok) {
+            if(queue)
+              return queue.map((q) => (
+                { type:q.cod,
+                  users:q.users
+                }
+                ));
+          } else {
+            throw queue;  
+          } 
+    }
+    catch(error){throw error; }
+    
+    
+  }; 
+
+const API = { getServices, postTicket,getWaitingQueue };
 export default API;

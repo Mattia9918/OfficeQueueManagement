@@ -50,6 +50,17 @@ app.post(`/serviceType`, async(req, res) => {
   }
 })
 
+//Waiting Queue
+app.get("/api/queue/:type",async (req, res) => {
+  try { 
+      const queue = await indovinelliDao.getIndovinelliUtente(req.params.id);
+      res.status(200).json(queue);
+  } catch (err) {
+      res.status(500).end();
+  }
+  })
+; 
+
 
 /* -- SERVER ACTIVATION -- */
 app.listen(port, () => {
