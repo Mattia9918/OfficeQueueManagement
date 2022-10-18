@@ -50,16 +50,16 @@ app.post(`/serviceType`, async(req, res) => {
   }
 })
 
-//Waiting Queue
-app.get("/api/queue/:type",async (req, res) => {
-  try { 
-      const queue = await indovinelliDao.getIndovinelliUtente(req.params.id);
+// Waiting Queue
+app.get("/api/queue/:id",async (req, res) => {
+  try {
+      const ticket = await dao.getTicket(req.params.id);
+      const queue = await dao.getQueue(ticket.service_type, ticket.issued_at);
       res.status(200).json(queue);
   } catch (err) {
       res.status(500).end();
   }
-  })
-; 
+});
 
 
 /* -- SERVER ACTIVATION -- */

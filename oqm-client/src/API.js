@@ -58,17 +58,13 @@ async function postTicket(serviceId) {
 };
 
 
-async function getWaitingQueue(type) {
+async function getWaitingQueue(ticketId) {
     try { 
-        const response = await fetch(new URL("queue/"+type,APIURL));
+        const response = await fetch(new URL("queue/"+ticketId,APIURL));
         const queue = await response.json();
         if (response.ok) {
             if(queue)
-              return queue.map((q) => (
-                { type:q.cod,
-                  users:q.users
-                }
-                ));
+              return queue; 
           } else {
             throw queue;  
           } 
@@ -78,5 +74,28 @@ async function getWaitingQueue(type) {
     
   }; 
 
-const API = { getServices, postTicket,getWaitingQueue };
+  async function postServiceType(serviceType) {
+    const url = APIURL + `/serviceType`;
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(serviceType)
+        });
+        if(response.ok) {
+            return true;
+        } else {
+            /* Application error */
+            const appErrText = await response.text();
+            throw new TypeError(appErrText);
+        }
+    } catch (err) {
+        /* Network error */
+        throw (err);
+    }
+}
+
+const API = { getServices, postTicket,getWaitingQueue, postServiceType };
 export default API;
