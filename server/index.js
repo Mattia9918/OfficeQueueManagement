@@ -37,6 +37,18 @@ app.post('/api/ticket/:serviceId', async (req, res) => {
   }
 });
 
+app.post(`/serviceType`, async(req, res) => {
+  try {
+    console.log(req.body)
+    const status = await dao.createServiceType(req.body);
+    if (status === '422')
+            res.status(422).json({ error: `Validation of request body failed` }).end();
+        else 
+            return res.status(201).end();
+  } catch (err) {
+    res.status(503).json({error: `Generic error`}).end();    
+  }
+})
 
 
 /* -- SERVER ACTIVATION -- */

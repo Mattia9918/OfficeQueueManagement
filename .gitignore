@@ -1,0 +1,4 @@
+*.DS_Store
+*.db
+code/server/coverage/
+node_modules/
