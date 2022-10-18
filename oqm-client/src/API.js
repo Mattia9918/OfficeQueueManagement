@@ -78,19 +78,18 @@ async function getWaitingQueue(type) {
     
   }; 
 
-  async function getAdmin(credentials) {
-    const url = APIURL + `admin`;
-
+  async function postServiceType(serviceType) {
+    const url = APIURL + `/serviceType`;
     try {
         const response = await fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(credentials)
+            body: JSON.stringify(serviceType)
         });
-        if (response.ok) {
-            return await response.json();
+        if(response.ok) {
+            return true;
         } else {
             /* Application error */
             const appErrText = await response.text();
@@ -99,8 +98,8 @@ async function getWaitingQueue(type) {
     } catch (err) {
         /* Network error */
         throw (err);
-  }
-};
+    }
+}
 
-const API = { getServices, postTicket,getWaitingQueue, getAdmin };
+const API = { getServices, postTicket,getWaitingQueue, postServiceType };
 export default API;

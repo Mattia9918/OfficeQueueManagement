@@ -3,22 +3,24 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Ticket from './Ticket';
 import API from './API';
 import Layout from './Layout';
+import ServiceType from './ServiceType';
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 
 import TableItem from './QueuePage.js'
+import { Service } from './Classes/Service';
 
 function App() {
 
   const [services, setServices] = useState();
-  
 
-  async function takeTicket(serviceId){
+
+  async function takeTicket(serviceId) {
     await API.postTicket(serviceId);
   }
 
-  async function loadServices(){
+  async function loadServices() {
     let servicesList = await API.getServices();
     setServices(servicesList);
   }
@@ -31,13 +33,14 @@ function App() {
 
   return (
     <BrowserRouter>
-        <Routes>
+      <Routes>
         <Route element={<Layout />} >
-          <Route path='/' element = {<Ticket takeTicket = {takeTicket} loadServices = {loadServices} services = {services} />}/>
-          <Route path='/queue' element={<TableItem id={takeTicket}/>} />
+          <Route path='/' element={<Ticket takeTicket={takeTicket} loadServices={loadServices} services={services} />} />
+          <Route path='/queue' element={<TableItem id={takeTicket} />} />
+          <Route path='/serviceType' element={<ServiceType />} />
         </Route>
-        </Routes>
-    </BrowserRouter>  
+      </Routes>
+    </BrowserRouter>
   );
 }
 

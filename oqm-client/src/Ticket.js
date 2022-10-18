@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import {Form, Button, Container} from 'react-bootstrap';
-import { Navigate,useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Ticket(props) {
 
@@ -23,7 +23,7 @@ function Ticket(props) {
             <Form.Label id = "label">Select the service type you want to receive:</Form.Label>
             <Form.Select id = "servicetype" onChange = {(event) => setService(event.target.value)} required = {true}>
               <option>Select a service</option>
-              <option value="1">One</option>
+              <option value="1"></option>
               <option value="2">Two</option>
               <option value="3">Three</option>
             </Form.Select>
