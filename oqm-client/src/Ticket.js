@@ -10,7 +10,8 @@ function Ticket(props) {
     const submitHandler = (event) => {
     event.preventDefault();
 
-    props.takeTicket(service.id);
+    //props.takeTicket(service.id);
+    props.setTicketId(3); 
     navigate("/queue"); 
     }
 

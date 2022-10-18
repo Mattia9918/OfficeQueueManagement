@@ -15,6 +15,7 @@ function App() {
 
   const [services, setServices] = useState();
 
+  const [ticketId,setTicketId] = useState(); 
 
   async function takeTicket(serviceId) {
     await API.postTicket(serviceId);
@@ -28,15 +29,15 @@ function App() {
 
   //Loads only during the first hydration the data about available services
   useEffect(() => {
-    loadServices();
+    //loadServices();
   }, []);
 
   return (
     <BrowserRouter>
       <Routes>
         <Route element={<Layout />} >
-          <Route path='/' element={<Ticket takeTicket={takeTicket} loadServices={loadServices} services={services} />} />
-          <Route path='/queue' element={<TableItem id={takeTicket} />} />
+          <Route path='/' element={<Ticket takeTicket={takeTicket} setTicketId={setTicketId} loadServices={loadServices} services={services} />} />
+          <Route path='/queue' element={<TableItem ticketId={ticketId} />} />
           <Route path='/serviceType' element={<ServiceType />} />
         </Route>
       </Routes>

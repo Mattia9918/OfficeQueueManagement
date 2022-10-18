@@ -27,7 +27,7 @@ exports.getTicket = (id) => {
 exports.getQueue = (service_type, issued_at) => {
     return new Promise((resolve, reject) => {
         const sql =
-            "SELECT count(*) FROM TICKET WHERE service_type = ? AND issued_at < ? AND state = 'open'";
+            "SELECT count(*) as numUtenti FROM TICKET WHERE service_type = ? AND issued_at < ? AND state = 'open'";
         db.get(sql, [service_type, issued_at], (err, row) => {
             if (err)
                 reject(err);

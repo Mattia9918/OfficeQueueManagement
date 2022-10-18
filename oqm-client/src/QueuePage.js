@@ -23,14 +23,14 @@ function TableItem(props) {
       const getQueue = async()=>{
         try{
 
-          const q = await API.getQueue();
+          const q = await API.getWaitingQueue(props.ticketId);
           
-          setQueue(q); 
+          setQueue(q);  
           
         }
         catch(err){}
       }; 
-       //getQueue()
+      getQueue(); 
       
     },[]);
 
@@ -39,22 +39,18 @@ function TableItem(props) {
     <Table className = "mt-5" striped bordered hover variant="light">
       <thead>
         <tr>
-          <th>Tipo Servizio</th>
+          <th>Codice Ticket</th>
           <th>Utenti in coda</th>
           <th>Tempo (min)</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Servizio_1</td>
-          <td>10</td>
+          <td>{props.ticketId}</td>
+          <td>{queue.numUtenti}</td>
           <td>20</td>
         </tr>
-        <tr>
-          <td>Servizio_2</td>
-          <td>15</td> 
-          <td>35</td> 
-        </tr>
+        
       </tbody>
     </Table>
     <center>

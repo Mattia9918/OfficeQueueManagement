@@ -64,11 +64,7 @@ async function getWaitingQueue(ticketId) {
         const queue = await response.json();
         if (response.ok) {
             if(queue)
-              return queue.map((q) => (
-                { type:q.cod,
-                  users:q.users
-                }
-                ));
+              return queue; 
           } else {
             throw queue;  
           } 
