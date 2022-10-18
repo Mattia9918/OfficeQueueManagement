@@ -78,5 +78,28 @@ async function getWaitingQueue(type) {
     
   }; 
 
-const API = { getServices, postTicket,getWaitingQueue };
+  async function postServiceType(serviceType) {
+    const url = APIURL + `/serviceType`;
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(serviceType)
+        });
+        if(response.ok) {
+            return true;
+        } else {
+            /* Application error */
+            const appErrText = await response.text();
+            throw new TypeError(appErrText);
+        }
+    } catch (error) {
+        /* Network error */
+        throw (err);
+    }
+}
+
+const API = { getServices, postTicket,getWaitingQueue, postServiceType };
 export default API;
