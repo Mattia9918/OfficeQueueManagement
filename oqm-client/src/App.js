@@ -6,11 +6,13 @@ import Layout from './Layout';
 import { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-//import TableItem from './QueuePage.js'
+
+import TableItem from './QueuePage.js'
 
 function App() {
 
   const [services, setServices] = useState();
+  
 
   async function takeTicket(serviceId){
     await API.postTicket(serviceId);
@@ -31,6 +33,7 @@ function App() {
         <Routes>
         <Route element={<Layout/>} >
           <Route path='/' element = {<Ticket takeTicket = {takeTicket} loadServices = {loadServices} services = {services} />}/>
+          <Route path='/queue' element={<TableItem id={takeTicket}/>} />
         </Route>
         </Routes>
     </BrowserRouter>  

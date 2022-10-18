@@ -1,14 +1,17 @@
 import {useState} from 'react';
 import {Form, Button, Container} from 'react-bootstrap';
+import { Navigate,useNavigate } from 'react-router-dom';
 
 function Ticket(props) {
 
     const [service, setService] = useState();
+    const navigate = useNavigate(); 
 
     const submitHandler = (event) => {
     event.preventDefault();
 
     props.takeTicket(service.id);
+    navigate("/queue"); 
     }
 
     return (

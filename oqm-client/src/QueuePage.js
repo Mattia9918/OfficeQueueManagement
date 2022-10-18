@@ -2,16 +2,16 @@
 /* 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 */
 
+import Container from 'react-bootstrap/Container';
 import API from "./API";
 import Table from 'react-bootstrap/Table';
 import   {useState,useEffect} from 'react';
 
-function TableItem() {
+function TableItem(props) {
 
   const [queue,setQueue] = useState({})
 
@@ -29,9 +29,10 @@ function TableItem() {
         catch(err){}
       }; 
        //getQueue()
+      
     },[]);
 
-  return (
+  return (<Container>
     <Table striped bordered hover variant="dark">
       <thead>
         <tr>
@@ -53,6 +54,7 @@ function TableItem() {
         </tr>
       </tbody>
     </Table>
+    </Container>
   );
 }
 
