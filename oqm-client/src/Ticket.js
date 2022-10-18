@@ -22,7 +22,7 @@ function Ticket(props) {
           </Container>
             <Form.Label id = "label">Select the service type you want to receive:</Form.Label>
             <Form.Select id = "servicetype" onChange = {(event) => setService(event.target.value)} required = {true}>
-              <option disabled = {true}>Select a service</option>
+              <option>Select a service</option>
               <option value="1">One</option>
               <option value="2">Two</option>
               <option value="3">Three</option>

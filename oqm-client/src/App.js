@@ -23,6 +23,7 @@ function App() {
     setServices(servicesList);
   }
 
+
   //Loads only during the first hydration the data about available services
   useEffect(() => {
     loadServices();
@@ -31,7 +32,7 @@ function App() {
   return (
     <BrowserRouter>
         <Routes>
-        <Route element={<Layout/>} >
+        <Route element={<Layout />} >
           <Route path='/' element = {<Ticket takeTicket = {takeTicket} loadServices = {loadServices} services = {services} />}/>
           <Route path='/queue' element={<TableItem id={takeTicket}/>} />
         </Route>

@@ -1,18 +1,20 @@
 
 /* 
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 */
 
-import Container from 'react-bootstrap/Container';
+
+import {Container, Button} from 'react-bootstrap';
 import API from "./API";
 import Table from 'react-bootstrap/Table';
 import   {useState,useEffect} from 'react';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 function TableItem(props) {
 
+  const navigate = useNavigate();
   const [queue,setQueue] = useState({})
 
 
@@ -32,8 +34,9 @@ function TableItem(props) {
       
     },[]);
 
-  return (<Container>
-    <Table striped bordered hover variant="dark">
+  return (
+  <Container className="shadow-sm p-2" id = "bodytable" >
+    <Table className = "mt-5" striped bordered hover variant="light">
       <thead>
         <tr>
           <th>Tipo Servizio</th>
@@ -54,6 +57,12 @@ function TableItem(props) {
         </tr>
       </tbody>
     </Table>
+    <center>
+          <Button align = "center" variant="primary" size="lg" 
+          onClick = {() => navigate('/')}>
+                Homepage
+          </Button>
+    </center>
     </Container>
   );
 }
