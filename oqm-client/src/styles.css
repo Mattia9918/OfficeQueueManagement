@@ -1,40 +1,41 @@
-#page
-{
+#page {
     background-color: #b5b2b2d0;
 }
 
 
-#body 
-{
-    border-radius:10px;
-    margin-top:100px;
+#body {
+    border-radius: 10px;
+    margin-top: 100px;
     height: 300px;
     width: 300px;
-   
+
 }
 
-#logo
-{
+#bodyServiceType {
+    border-radius: 10px;
+    margin-top: 100px;
+    height: 300px;
+    width: 50%;
+}
+
+#logo {
     margin-top: 20px;
     margin-bottom: 30px;
     text-align: center;
 }
 
-#title
-{
+#title {
     font-size: 25px;
     font-family: Trebuchet MS;
     font-style: normal;
-    color:#020202d0;
+    color: #020202d0;
 }
 
-#servicetype 
-{
+#servicetype {
     margin-bottom: 30px;
 }
 
-#label 
-{
+#label {
     font-size: 13px;
     color: rgb(150, 150, 150);
 }
