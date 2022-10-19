@@ -15,25 +15,8 @@ import { useNavigate } from 'react-router-dom';
 
 function TableItem(props) {
 
-  const [queue,setQueue] = useState({})
+  
   const navigate = useNavigate();
-
-
-  useEffect( 
-    ()=>{
-      const getQueue = async()=>{
-        try{
-
-          const q = await API.getQueue();
-          
-          setQueue(q); 
-          
-        }
-        catch(err){}
-      }; 
-       //getQueue()
-      
-    },[]);
     
 return (
   <Container className="shadow-sm p-2" id = "bodytable" >
@@ -48,7 +31,7 @@ return (
       <tbody>
         <tr>
           <td>{props.ticketId}</td>
-          <td>{queue.numUtenti}</td>
+          <td>{props.queue.numUtenti}</td>
           <td>20</td>
         </tr>
         
