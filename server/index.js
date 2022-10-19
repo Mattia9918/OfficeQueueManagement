@@ -56,7 +56,7 @@ app.post(`/api/serviceType`, async (req, res) => {
 app.get("/api/queue/:id", async (req, res) => {
   try {
     const ticket = await dao.getTicket(req.params.id);
-    const queue = await dao.getQueue(ticket.service_type, ticket.issued_at);
+    const queue = await dao.getQueue(ticket.id, ticket.service_type, ticket.issued_at);
     res.status(200).json(queue);
   } catch (err) {
     res.status(500).end();
