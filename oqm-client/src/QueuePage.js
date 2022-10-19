@@ -24,14 +24,14 @@ function TableItem(props) {
       const getQueue = async()=>{
         try{
 
-          const q = await API.getQueue();
+          const q = await API.getWaitingQueue(props.ticketId);
           
           setQueue(q); 
           
         }
         catch(err){}
       }; 
-       //getQueue()
+       getQueue();
       
     },[]);
     
@@ -42,14 +42,14 @@ return (
         <tr>
           <th>Codice Ticket</th>
           <th>Utenti in coda</th>
-          <th>Tempo (min)</th>
+          
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>{props.ticketId}</td>
           <td>{queue.numUtenti}</td>
-          <td>20</td>
+        
         </tr>
         
       </tbody>
