@@ -160,15 +160,23 @@ exports.deleteTicket = () => {
 
 exports.deleteServices = () => {
   return new Promise((resolve, reject) => {
-    const sql = 'DELETE FROM SERVICE_TYPE'; 
-    db.run(sql, [], function (err) {;
+    const sql1 = 'DROP TABLE SERVICE_TYPE';
+    const sql2 = 'CREATE TABLE SERVICE_TYPE(id integer NOT NULL, name text NOT NULL, estimated_time text, PRIMARY KEY(id) ) '
+    db.run(sql1, [], function (err) {
       if (err) {
         reject(err);
       }
       else {
-        resolve();
-      }
+        db.run(sql2, [], function(err) {
+          if (err) {
+            reject(err)
+          }
+          else {
+            resolve()
+          }
     });
-  });
+  }
+})
+  }) 
 };
 

@@ -14,8 +14,9 @@ function ServiceType(props) {
         const info = { name, estimatedTime };
 
         event.preventDefault();
+        props.setNewServiceType(info.name);
         props.postServiceType(info);
-        navigate("/serviceType");
+        navigate("/");
     }
 
 
