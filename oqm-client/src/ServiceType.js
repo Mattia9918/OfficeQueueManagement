@@ -19,8 +19,8 @@ function ServiceType(props) {
 
 
     return (
-        <Container id="bodyServiceType">
-            <Form onSubmit={submitHandler}>
+        <Container className="shadow-sm p-2" id="bodyServiceType">
+            <Form>
                 <Row >
 
                     <h3>Insert New Service Type</h3>

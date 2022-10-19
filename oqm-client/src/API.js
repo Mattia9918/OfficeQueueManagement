@@ -58,18 +58,13 @@ async function postTicket(serviceId) {
 };
 
 
-async function getWaitingQueue(type) {
+async function getWaitingQueue(ticketId) {
     try {
-        const response = await fetch(new URL("queue/" + type, APIURL));
+        const response = await fetch(new URL("queue/" + ticketId, APIURL));
         const queue = await response.json();
         if (response.ok) {
             if (queue)
-                return queue.map((q) => (
-                    {
-                        type: q.cod,
-                        users: q.users
-                    }
-                ));
+                return queue;
         } else {
             throw queue;
         }
@@ -97,7 +92,7 @@ async function postServiceType(serviceType) {
             const appErrText = await response.text();
             throw new TypeError(appErrText);
         }
-    } catch (error) {
+    } catch (err) {
         /* Network error */
         throw (error);
     }
