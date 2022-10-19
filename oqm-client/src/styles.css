@@ -11,6 +11,15 @@
 
 }
 
+#bodytable 
+{
+    border-radius:10px;
+    margin-top:100px;
+    height: 300px;
+    width: 400px;
+}
+
+
 #bodyServiceType {
     border-radius: 10px;
     margin-top: 100px;

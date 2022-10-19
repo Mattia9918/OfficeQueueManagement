@@ -11,8 +11,8 @@ async function getServices() {
         });
         if (response.ok) {
             const list = await response.json();
-            const servicesList = list.map((service) =>
-                new Service(
+            const servicesList = list.map((service) => 
+                new Service (
                     service.id,
                     service.name,
                     service.estimated_time,

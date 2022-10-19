@@ -1,9 +1,14 @@
 import {Navbar, Container, Col, Nav, Form, Row, Button} from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 
 function Navigation(props) {
 
+    const navigate = useNavigate();
+    
     const loginHandler = (event) => {
         event.preventDefault();
+
+        navigate('/serviceType');
     
     }
 

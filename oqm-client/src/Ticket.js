@@ -1,16 +1,16 @@
 import {useState} from 'react';
 import {Form, Button, Container} from 'react-bootstrap';
-import { Navigate,useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Ticket(props) {
 
-    const [service, setService] = useState();
+    const [serviceId, setServiceId] = useState();
     const navigate = useNavigate(); 
 
     const submitHandler = (event) => {
     event.preventDefault();
 
-    props.takeTicket(service.id);
+    props.takeTicket(serviceId); 
     navigate("/queue"); 
     }
 
@@ -21,11 +21,11 @@ function Ticket(props) {
             <i id = "title">OQM</i>
           </Container>
             <Form.Label id = "label">Select the service type you want to receive:</Form.Label>
-            <Form.Select id = "servicetype" onChange = {(event) => setService(event.target.value)} required = {true}>
-              <option disabled = {true}>Select a service</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+            <Form.Select id = "servicetype" onChange = {(event) => setServiceId(event.target.value)} required = {true}>
+              <option>Select a service</option>
+              {props.services != undefined && props.services.map((service) =>
+                <option value = {service.id}>{service.name}</option>
+              )};
             </Form.Select>
 
           <center>

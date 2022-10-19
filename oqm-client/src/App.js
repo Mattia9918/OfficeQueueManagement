@@ -18,6 +18,7 @@ function App() {
     await API.postTicket(serviceId);
   }
 
+
   async function loadServices() {
     let servicesList = await API.getServices();
     setServices(servicesList);
