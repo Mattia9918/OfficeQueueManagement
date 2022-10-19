@@ -75,25 +75,30 @@ async function getWaitingQueue(ticketId) {
 };
 
 async function postServiceType(serviceType) {
-    console.log(serviceType);
+
     const url = APIURL + `serviceType`;
+
     try {
+
         const response = await fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(serviceType)
+            body: JSON.stringify({ name: serviceType.name, estimatedTime: serviceType.estimatedTime })
         });
         if (response.ok) {
             return true;
         } else {
             /* Application error */
             const appErrText = await response.text();
+
             throw new TypeError(appErrText);
+
         }
-    } catch (err) {
+    } catch (error) {
         /* Network error */
+
         throw (error);
     }
 }

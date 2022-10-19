@@ -23,6 +23,12 @@ function App() {
     setServices(servicesList);
   }
 
+  async function postServiceType(serviceType) {
+
+    let servType = await API.postServiceType(serviceType);
+
+
+  }
 
   //Loads only during the first hydration the data about available services
   useEffect(() => {
@@ -35,7 +41,7 @@ function App() {
         <Route element={<Layout />} >
           <Route path='/' element={<Ticket takeTicket={takeTicket} setTicketId={setTicketId} loadServices={loadServices} services={services} />} />
           <Route path='/queue' element={<TableItem ticketId={ticketId} />} />
-          <Route path='/serviceType' element={<ServiceType />} />
+          <Route path='/serviceType' element={<ServiceType postServiceType={postServiceType} />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -23,7 +23,9 @@ app.get('/api/service', async (req, res) => {
     const services = await dao.getServices();
     return res.status(200).json(services);
   } catch (err) {
+    console.log(err);
     return res.status(500).json({ error: err });
+
   }
 });
 
@@ -37,32 +39,33 @@ app.post('/api/ticket/:serviceId', async (req, res) => {
   }
 });
 
-app.post(`/serviceType`, async(req, res) => {
+app.post(`/api/serviceType`, async (req, res) => {
+
   try {
-    console.log(req.body)
-    const status = await dao.createServiceType(req.body);
+
+    const status = await dao.createServiceType(req.body.name, req.body.estimatedTime);
     if (status === '422')
-            res.status(422).json({ error: `Validation of request body failed` }).end();
-        else 
-            return res.status(201).end();
+      res.status(422).json({ error: `Validation of request body failed` }).end();
+    else
+      return res.status(201).end();
   } catch (err) {
-    res.status(503).json({error: `Generic error`}).end();    
+    res.status(503).json({ error: `Generic error` }).end();
   }
 })
 
-//Waiting Queue
-app.get("/api/queue/:type",async (req, res) => {
-  try { 
-      const queue = await indovinelliDao.getIndovinelliUtente(req.params.id);
-      res.status(200).json(queue);
+// Waiting Queue
+app.get("/api/queue/:id", async (req, res) => {
+  try {
+    const ticket = await dao.getTicket(req.params.id);
+    const queue = await dao.getQueue(ticket.service_type, ticket.issued_at);
+    res.status(200).json(queue);
   } catch (err) {
-      res.status(500).end();
+    res.status(500).end();
   }
-  })
-; 
+});
 
 
 /* -- SERVER ACTIVATION -- */
 app.listen(port, () => {
-    console.log(`Server listening at http://localhost:${port}`);
+  console.log(`Server listening at http://localhost:${port}`);
 });

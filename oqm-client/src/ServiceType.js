@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Form, Button, Container, Row } from 'react-bootstrap';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 function ServiceType(props) {
@@ -12,6 +12,7 @@ function ServiceType(props) {
     const submitHandler = (event) => {
 
         const info = { name, estimatedTime };
+
         event.preventDefault();
         props.postServiceType(info);
         navigate("/serviceType");
@@ -20,7 +21,7 @@ function ServiceType(props) {
 
     return (
         <Container className="shadow-sm p-2" id="bodyServiceType">
-            <Form>
+            <Form onSubmit={submitHandler}>
                 <Row >
 
                     <h3>Insert New Service Type</h3>
