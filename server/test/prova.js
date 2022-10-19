@@ -38,6 +38,7 @@ describe('test get waiting queue', () => {
     })
 
     getQueue(2, 4);
+    getQueueError(5);
 
 });
 
@@ -70,6 +71,16 @@ function getQueue(expectedQueue, ticket_id) {
                 res.should.have.status(200)
                 res.body.numUtenti.should.be.equal(2)
             })
+        }
+    )
+}
+
+function getQueueError(ticket_id) {
+    it('test get /api/queue/:id', async () => {
+            await agent.get('/api/queue/' + `${ticket_id}`)
+                .then(function (res) {
+                    res.should.have.status(500)
+                })
         }
     )
 }
