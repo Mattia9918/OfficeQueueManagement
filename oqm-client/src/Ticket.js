@@ -24,7 +24,7 @@ function Ticket(props) {
             <Form.Select id = "servicetype" onChange = {(event) => setServiceId(event.target.value)} required = {true}>
               <option>Select a service</option>
               {props.services != undefined && props.services.map((service) =>
-                <option value = {service.id}>{service.name}</option>
+                <option value = {service.id} key = {service.id}>{service.name}</option>
               )};
             </Form.Select>
 

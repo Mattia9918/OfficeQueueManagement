@@ -90,9 +90,13 @@ exports.postTicket = (serviceId) => {
   return new Promise((resolve, reject) => {
     const sql = 'INSERT INTO TICKET(id, service_type, state, issued_at, counter) VALUES(?, ?, ?, ? ,?)'; 
     var current = new Date();
-    db.run(sql, [null, serviceId, 'open', `${current.toLocaleString()}`, 1], function (err) {
-      if (err) reject(err);
-      else resolve(this.lastID);
+    db.run(sql, [null, serviceId, 'open', `${current.toLocaleString()}`, 1], function (err) {;
+      if (err) {
+        reject(err);
+      }
+      else {
+        resolve(this.lastID);
+      }
     });
   });
 };

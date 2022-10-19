@@ -31,8 +31,8 @@ app.get('/api/service', async (req, res) => {
 app.post('/api/ticket/:serviceId', async (req, res) => {
   const serviceId = req.params.serviceId;
   try {
-    await dao.postTicket(serviceId);
-    return res.status(201).end();
+    const myTicketId = await dao.postTicket(serviceId);
+    return res.status(201).json(myTicketId);
   } catch (err) {
     return res.status(503).json({ error: err });
   }

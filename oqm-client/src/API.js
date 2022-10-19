@@ -43,7 +43,8 @@ async function postTicket(serviceId) {
         });
 
         if (response.ok) {
-            return true;
+            const myTicketId = await response.json();
+            return myTicketId;
 
         } else {
             /* Application error */

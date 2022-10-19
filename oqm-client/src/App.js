@@ -11,11 +11,11 @@ import TableItem from './QueuePage.js'
 function App() {
 
   const [services, setServices] = useState();
-
   const [ticketId, setTicketId] = useState();
 
   async function takeTicket(serviceId) {
-    await API.postTicket(serviceId);
+    let myTicketId = await API.postTicket(serviceId);
+    setTicketId(myTicketId);
   }
 
 
