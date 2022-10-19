@@ -10,10 +10,13 @@ import Container from 'react-bootstrap/Container';
 import API from "./API";
 import Table from 'react-bootstrap/Table';
 import   {useState,useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 function TableItem(props) {
 
   const [queue,setQueue] = useState({})
+  const navigate = useNavigate();
 
 
   useEffect( 
@@ -31,29 +34,32 @@ function TableItem(props) {
        //getQueue()
       
     },[]);
-
-  return (<Container>
-    <Table striped bordered hover variant="dark">
+    
+return (
+  <Container className="shadow-sm p-2" id = "bodytable" >
+    <Table className = "mt-5" striped bordered hover variant="light">
       <thead>
         <tr>
-          <th>Tipo Servizio</th>
+          <th>Codice Ticket</th>
           <th>Utenti in coda</th>
           <th>Tempo (min)</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td>Servizio_1</td>
-          <td>10</td>
+          <td>{props.ticketId}</td>
+          <td>{queue.numUtenti}</td>
           <td>20</td>
         </tr>
-        <tr>
-          <td>Servizio_2</td>
-          <td>15</td> 
-          <td>35</td> 
-        </tr>
+        
       </tbody>
     </Table>
+    <center>
+          <Button align = "center" variant="primary" size="lg" 
+          onClick = {() => navigate('/')}>
+                Homepage
+          </Button>
+    </center>
     </Container>
   );
 }
