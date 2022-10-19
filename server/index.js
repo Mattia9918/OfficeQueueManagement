@@ -48,7 +48,6 @@ app.post(`/api/serviceType`, async (req, res) => {
     else
       return res.status(201).end();
   } catch (err) {
-    console.log(err);
     res.status(503).json({ error: `Generic error` }).end();
   }
 })

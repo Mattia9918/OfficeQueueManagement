@@ -1,13 +1,19 @@
 import {Navbar, Container, Col, Nav, Form, Row, Button} from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import {useState} from 'react';
 
 function Navigation(props) {
 
     const navigate = useNavigate();
+
+    const [username, setUsername] = useState(); 
+    const [password, setPassword] = useState();
     
     const loginHandler = (event) => {
         event.preventDefault();
 
+        setUsername("");
+        setPassword("");
         navigate('/serviceType');
     
     }
@@ -41,12 +47,16 @@ function Navigation(props) {
                                     <Row>
                                     <Col align = "center">
                                     <Form.Group className="mb-3" controlId="username">
-                                        <Form.Control  size = "sm" type="text" placeholder="Username" required = {true}/>
+                                        <Form.Control  size = "sm" type="text" placeholder="Username" required = {true}
+                                        value={username}
+                                        onChange={(event) => setUsername(event.target.value)}/>
                                     </Form.Group>
                                     </Col>
                                     <Col align = "center">
                                     <Form.Group  className="mb-3" controlId="password">
-                                        <Form.Control  size = "sm" type="password" placeholder="Password" required = {true}/>
+                                        <Form.Control  size = "sm" type="password" placeholder="Password" required = {true}
+                                        value={password}
+                                        onChange={(event) => setPassword(event.target.value)}/>
                                     </Form.Group>
                                     </Col>
                                     <Col xs = {2} align = "center">
