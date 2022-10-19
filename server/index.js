@@ -63,8 +63,30 @@ app.get("/api/queue/:id", async (req, res) => {
   }
 });
 
+app.delete("/api/ticket/delete", async (req, res) => {
+  try {
+    await dao.deleteTicket();
+    res.status(200).end();
+  } catch (err) {
+    res.status(500).end();
+  }
+});
+
+app.delete("/api/services/delete", async (req, res) => {
+  try {
+    await dao.deleteServices();
+    res.status(200).end();
+  } catch (err) {
+    res.status(500).end();
+  }
+});
 
 /* -- SERVER ACTIVATION -- */
 app.listen(port, () => {
   console.log(`Server listening at http://localhost:${port}`);
 });
+
+/* Objects to export */
+module.exports = {
+  app: app, 
+};

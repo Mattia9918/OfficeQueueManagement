@@ -134,3 +134,31 @@ exports.getSTicket = (id) => {
   });
 };
 
+exports.deleteTicket = () => {
+  return new Promise((resolve, reject) => {
+    const sql = 'DELETE FROM TICKET'; 
+    db.run(sql, [], function (err) {;
+      if (err) {
+        reject(err);
+      }
+      else {
+        resolve();
+      }
+    });
+  });
+};
+
+exports.deleteServices = () => {
+  return new Promise((resolve, reject) => {
+    const sql = 'DELETE FROM SERVICE_TYPE'; 
+    db.run(sql, [], function (err) {;
+      if (err) {
+        reject(err);
+      }
+      else {
+        resolve();
+      }
+    });
+  });
+};
+
