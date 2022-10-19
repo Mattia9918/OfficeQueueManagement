@@ -25,22 +25,26 @@ function ServiceType(props) {
             <Form onSubmit={submitHandler}>
                 <Row >
 
-                    <h3>Insert New Service Type</h3>
+                    <center>
+                    <h3>Insert new service type</h3>
+                    </center>
 
-
-                    <Form.Group className="mt-4">
+                    <Form.Group  className="mt-2">
                         <Form.Label>Name</Form.Label>
-                        <Form.Control type="text" placeholder='Insert Service Type Name' value={name} onChange={ev => setName(ev.target.value)}></Form.Control>
+                        <Form.Control type="text" placeholder='Insert service type name' value={name} onChange={ev => setName(ev.target.value)}></Form.Control>
 
                     </Form.Group>
-                    <Form.Group className='mt-4'>
-                        <Form.Label>Estimated Time</Form.Label>
-                        <Form.Control type="text" placeholder='Insert Estimated Time' value={estimatedTime} onChange={ev => setEstimatedTime(ev.target.value)}></Form.Control>
+                    <Form.Group  className='mt-4'>
+                        <Form.Label>Estimated time</Form.Label>
+                        <Form.Control type="text" placeholder='Insert estimated time' value={estimatedTime} onChange={ev => setEstimatedTime(ev.target.value)}></Form.Control>
 
                     </Form.Group>
 
                 </Row>
-                <Button variant='primary' className="mt-4" type="submit">Submit</Button>
+                <center>
+                <Button variant='secondary' className="mt-4 me-3" size = "lg" onClick = {() => navigate('/')}>Back</Button>
+                <Button variant='primary' className="mt-4 ms-3" type="submit" size = "lg">Submit</Button>
+                </center>
             </Form>
         </Container>
     )

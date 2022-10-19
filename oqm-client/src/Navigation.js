@@ -1,13 +1,15 @@
 import {Navbar, Container, Col, Nav, Form, Row, Button} from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import {useState} from 'react';
+
 
 function Navigation(props) {
 
+    let params = useParams();
     const navigate = useNavigate();
 
-    const [username, setUsername] = useState(); 
-    const [password, setPassword] = useState();
+    const [username, setUsername] = useState(""); 
+    const [password, setPassword] = useState("");
     
     const loginHandler = (event) => {
         event.preventDefault();
@@ -30,7 +32,7 @@ function Navigation(props) {
                         {/* Logo and brand */}
                         <Container>
                         <Navbar.Brand>
-                            <i id = "title" style = {{'margin-left': '20px'}}>OQM</i>
+                            <i id = "title" style = {{'marginLeft': '20px'}}>OQM</i>
                         </Navbar.Brand>
                         </Container>
                     </Col>
@@ -42,6 +44,7 @@ function Navigation(props) {
                    <Container>
                     <Navbar.Collapse id="basic-navbar-nav" >
                         <Nav className="ms-auto">
+                            {params.service == 'serviceType' ||
                             <Container>
                                 <Form onSubmit={loginHandler}>
                                     <Row>
@@ -67,6 +70,7 @@ function Navigation(props) {
                                     </Row>
                                 </Form>
                         </Container>
+                        }
                         </Nav>
                     </Navbar.Collapse>
                     </Container> 

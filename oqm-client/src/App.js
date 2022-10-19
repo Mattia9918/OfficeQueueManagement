@@ -46,7 +46,7 @@ function App() {
         <Route element={<Layout />} >
           <Route path='/' element={<Ticket takeTicket={takeTicket} setTicketId={setTicketId} loadServices={loadServices} services={services} />} />
           <Route path='/queue' element={<TableItem ticketId={ticketId} queue = {queue} />} />
-          <Route path='/serviceType' element={<ServiceType postServiceType={postServiceType} setNewServiceType = {setNewServiceType}/>} />
+          <Route path='/:service' element={<ServiceType postServiceType={postServiceType} setNewServiceType = {setNewServiceType}/>} />
         </Route>
       </Routes>
     </BrowserRouter>
