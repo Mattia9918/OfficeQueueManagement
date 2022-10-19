@@ -11,11 +11,14 @@ import TableItem from './QueuePage.js'
 function App() {
 
   const [services, setServices] = useState();
+  const [queue, setQueue] = useState({});
   const [ticketId, setTicketId] = useState();
 
   async function takeTicket(serviceId) {
     let myTicketId = await API.postTicket(serviceId);
     setTicketId(myTicketId);
+    let q = await API.getWaitingQueue(myTicketId);
+    setQueue(q);
   }
 
 
@@ -41,7 +44,7 @@ function App() {
       <Routes>
         <Route element={<Layout />} >
           <Route path='/' element={<Ticket takeTicket={takeTicket} setTicketId={setTicketId} loadServices={loadServices} services={services} />} />
-          <Route path='/queue' element={<TableItem ticketId={ticketId} />} />
+          <Route path='/queue' element={<TableItem ticketId={ticketId} queue = {queue} />} />
           <Route path='/serviceType' element={<ServiceType postServiceType={postServiceType} />} />
         </Route>
       </Routes>
