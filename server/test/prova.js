@@ -3,7 +3,7 @@ const chaiHttp = require('chai-http');
 chai.use(chaiHttp);
 chai.should();
 
-const { app }  = require('../index');
+const { app } = require('../index');
 var agent = chai.request.agent(app);
 
 describe('test ticket apis', () => {
@@ -13,7 +13,7 @@ describe('test ticket apis', () => {
     })
 
     postTicket(201, 2);
-    
+
 });
 
 describe('test service apis', () => {
@@ -39,12 +39,14 @@ describe('test service apis', () => {
     getServices(200, service1, service2);
 
     
+    createServiceType(201, { "name": "ciao", "estimatedTime": "200" });
+
 });
 
 
 function postTicket(expectedHTTPStatus, serviceId) {
     it('test post /api/ticket/:serviceId', async () => {
-        await agent.post('/api/ticket/'+`${serviceId}`)
+        await agent.post('/api/ticket/' + `${serviceId}`)
             .send()
             .then(function (res) {
                 res.should.have.status(expectedHTTPStatus);
@@ -82,3 +84,13 @@ function getServices(expectedHTTPStatus, service1, service2) {
     })
 }
     
+function createServiceType(expectedHTTPStatus, serviceType) {
+    it('test post /api/serviceType', async () => {
+        await agent.post('/api/serviceType')
+            .send(serviceType)
+            .then(function (res) {
+                res.should.have.status(expectedHTTPStatus);
+            })
+
+    })
+}
