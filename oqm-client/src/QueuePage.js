@@ -6,7 +6,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 */
 
-import Container from 'react-bootstrap/Container';
+import {Container,Button} from 'react-bootstrap';
 import API from "./API";
 import Table from 'react-bootstrap/Table';
 import   {useState,useEffect} from 'react';
