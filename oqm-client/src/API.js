@@ -1,4 +1,4 @@
-import {Service} from './Classes/Service'
+import { Service } from './Classes/Service'
 
 const APIURL = 'http://localhost:3001/api/'
 
@@ -11,8 +11,8 @@ async function getServices() {
         });
         if (response.ok) {
             const list = await response.json();
-            const servicesList = list.map((service) => 
-                new Service (
+            const servicesList = list.map((service) =>
+                new Service(
                     service.id,
                     service.name,
                     service.estimated_time,
@@ -59,27 +59,29 @@ async function postTicket(serviceId) {
 
 
 async function getWaitingQueue(type) {
-    try { 
-        const response = await fetch(new URL("queue/"+type,APIURL));
+    try {
+        const response = await fetch(new URL("queue/" + type, APIURL));
         const queue = await response.json();
         if (response.ok) {
-            if(queue)
-              return queue.map((q) => (
-                { type:q.cod,
-                  users:q.users
-                }
+            if (queue)
+                return queue.map((q) => (
+                    {
+                        type: q.cod,
+                        users: q.users
+                    }
                 ));
-          } else {
-            throw queue;  
-          } 
+        } else {
+            throw queue;
+        }
     }
-    catch(error){throw error; }
-    
-    
-  }; 
+    catch (error) { throw error; }
 
-  async function postServiceType(serviceType) {
-    const url = APIURL + `/serviceType`;
+
+};
+
+async function postServiceType(serviceType) {
+    console.log(serviceType);
+    const url = APIURL + `serviceType`;
     try {
         const response = await fetch(url, {
             method: 'POST',
@@ -88,7 +90,7 @@ async function getWaitingQueue(type) {
             },
             body: JSON.stringify(serviceType)
         });
-        if(response.ok) {
+        if (response.ok) {
             return true;
         } else {
             /* Application error */
@@ -97,9 +99,9 @@ async function getWaitingQueue(type) {
         }
     } catch (error) {
         /* Network error */
-        throw (err);
+        throw (error);
     }
 }
 
-const API = { getServices, postTicket,getWaitingQueue, postServiceType };
+const API = { getServices, postTicket, getWaitingQueue, postServiceType };
 export default API;

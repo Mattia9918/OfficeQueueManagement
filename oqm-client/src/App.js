@@ -9,7 +9,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 
 import TableItem from './QueuePage.js'
-import { Service } from './Classes/Service';
+//import { Service } from './Classes/Service';
 
 function App() {
 
@@ -25,6 +25,11 @@ function App() {
     setServices(servicesList);
   }
 
+  async function postServiceType(serviceType) {
+    let sType = await API.postServiceType(serviceType);
+
+  }
+
   //Loads only during the first hydration the data about available services
   useEffect(() => {
     loadServices();
@@ -36,7 +41,7 @@ function App() {
         <Route element={<Layout />} >
           <Route path='/' element={<Ticket takeTicket={takeTicket} loadServices={loadServices} services={services} />} />
           <Route path='/queue' element={<TableItem id={takeTicket} />} />
-          <Route path='/serviceType' element={<ServiceType />} />
+          <Route path='/serviceType' element={<ServiceType postServiceType={postServiceType} />} />
         </Route>
       </Routes>
     </BrowserRouter>
