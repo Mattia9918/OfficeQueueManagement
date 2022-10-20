@@ -30,6 +30,8 @@ describe("test user", () => {
     })
 
     testgetServices();
+    testGetTicket();
+    testGetQueue();
 });
 
 function testgetServices() {
@@ -48,5 +50,46 @@ function testgetServices() {
                 }
             ]
         )
+    })
+}
+
+function testGetTicket() {
+    test("Testing get ticket", async () => {
+        let id = await dao.postTicket(1);
+        let ticket = await dao.getTicket(id);
+        expect(ticket.service_type).toEqual(1);
+        expect(ticket.id).toEqual(id);
+        expect(ticket.state).toEqual('open');
+    })
+}
+
+function testGetQueue() {
+    test("Testing get queue", async () => {
+
+        // Put in queue 3 tickets for service 1, one ticket for service 2
+        await dao.postTicket(1);
+        await dao.postTicket(1);
+        let id1 = await dao.postTicket(2);
+        let id2 = await dao.postTicket(1);
+
+        // Retrieve last 2 tickets
+        let ticket1 = await dao.getTicket(id1);
+        let ticket2 = await dao.getTicket(id2);
+
+        // Get queue for ticket 1 (service 2): should be 0
+        let queue1 = await dao.getQueue(id1, ticket1.service_type, ticket1.issued_at);
+        expect(queue1).toEqual(
+            {
+                numUtenti: 0
+            }
+        );
+
+        // Get queue for ticket 2 (service 1): should be 2
+        let queue2 = await dao.getQueue(id2, ticket2.service_type, ticket2.issued_at);
+        expect(queue2).toEqual(
+            {
+                numUtenti: 2
+            }
+        );
     })
 }
