@@ -20,7 +20,7 @@ function TableItem(props) {
     
 return (
   <Container className="shadow-sm p-2" id = "bodytable" >
-    <Table className = "mt-5" striped bordered hover variant="light">
+    <Table className = "mt-4">
       <thead>
         <tr>
           <th>Codice Ticket</th>
@@ -38,7 +38,7 @@ return (
       </tbody>
     </Table>
     <center>
-          <Button align = "center" variant="primary" size="lg" 
+          <Button className = "mt-3" align = "center" variant="primary" size="lg" 
           onClick = {() => navigate('/')}>
                 Homepage
           </Button>

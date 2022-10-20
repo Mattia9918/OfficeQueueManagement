@@ -26,11 +26,11 @@ exports.getTicket = (id) => {
 }
 
 // Get person in queue
-exports.getQueue = (service_type, issued_at) => {
+exports.getQueue = (id, service_type, issued_at) => {
   return new Promise((resolve, reject) => {
     const sql =
-      "SELECT count(*) as numUtenti FROM TICKET WHERE service_type = ? AND issued_at < ? AND state = 'open'";
-    db.get(sql, [service_type, issued_at], (err, row) => {
+      "SELECT count(*) as numUtenti FROM TICKET WHERE service_type = ? AND issued_at <= ? AND state = 'open' AND id != ?";
+    db.get(sql, [service_type, issued_at, id], (err, row) => {
       if (err)
         reject(err);
       else
@@ -132,5 +132,51 @@ exports.getSTicket = (id) => {
       }
     });
   });
+};
+
+exports.deleteTicket = () => {
+  return new Promise((resolve, reject) => {
+    const sql1 = 'DELETE FROM TICKET';
+    db.run(sql1, [], function (err) {;
+      if (err) {
+        reject(err);
+      }
+      else {
+        resolve();
+      }
+    });
+    const sql2 = "UPDATE SQLITE_SEQUENCE SET SEQ=0 WHERE NAME='TICKET'";
+    db.run(sql2, [], function (err) {;
+      if (err) {
+        console.log(err);
+        reject(err);
+      }
+      else {
+        resolve();
+      }
+    });
+  });
+};
+
+exports.deleteServices = () => {
+  return new Promise((resolve, reject) => {
+    const sql1 = 'DROP TABLE SERVICE_TYPE';
+    const sql2 = 'CREATE TABLE SERVICE_TYPE(id integer NOT NULL, name text NOT NULL, estimated_time text, PRIMARY KEY(id) ) '
+    db.run(sql1, [], function (err) {
+      if (err) {
+        reject(err);
+      }
+      else {
+        db.run(sql2, [], function(err) {
+          if (err) {
+            reject(err)
+          }
+          else {
+            resolve()
+          }
+    });
+  }
+})
+  }) 
 };
 
