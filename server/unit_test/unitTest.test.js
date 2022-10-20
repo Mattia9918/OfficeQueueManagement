@@ -3,8 +3,8 @@ const dao = require('../dao');
 
 
 describe("test user", () => {
-    
-    beforeEach(async () => {    
+
+    beforeEach(async () => {
         const service1 = {
             name: "service1",
             estimatedTime: "10"
@@ -33,6 +33,49 @@ describe("test user", () => {
     testGetTicket();
     testGetQueue();
 });
+
+describe("test user", () => {
+
+    beforeEach(async () => {
+
+
+
+        try {
+
+            await dao.deleteServices();
+
+            //add 2 services
+            // await dao.createServiceType(service1.name, service1.estimatedTime);
+            // await dao.createServiceType(service2.name, service1.estimatedTime)
+
+        } catch (err) {
+            console.log(err)
+        }
+    })
+
+    testCreateServiceType();
+});
+
+
+
+
+
+function testCreateServiceType() {
+    test("create a service type", async () => {
+        const service1 = {
+            name: "service1",
+            estimatedTime: "10"
+        }
+        let id = await dao.createServiceType(service1.name, service1.estimatedTime);
+
+        let res = await dao.getSService(id);
+        expect(res).toEqual({
+            name: "service1",
+            estimated_time: "10",
+            id: id
+        });
+    });
+}
 
 function testgetServices() {
     test("Testing getServices", async () => {
