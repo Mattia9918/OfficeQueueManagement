@@ -43,6 +43,21 @@ describe('test service apis', () => {
 
 });
 
+describe('test get waiting queue', () => {
+
+    beforeEach(async () => {
+        await agent.delete('/api/ticket/delete');
+        await agent.post('/api/ticket/1');
+        await agent.post('/api/ticket/2');
+        await agent.post('/api/ticket/1');
+        await agent.post('/api/ticket/1');
+    })
+
+    getQueue(2, 4);
+    getQueueError(5);
+
+});
+
 
 function postTicket(expectedHTTPStatus, serviceId) {
     it('test post /api/ticket/:serviceId', async () => {
@@ -93,4 +108,25 @@ function createServiceType(expectedHTTPStatus, serviceType) {
             })
 
     })
+}
+
+function getQueue(expectedQueue, ticket_id) {
+    it('test get /api/queue/:id', async () => {
+        await agent.get('/api/queue/' + `${ticket_id}`)
+            .then(function (res) {
+                res.should.have.status(200)
+                res.body.numUtenti.should.be.equal(2)
+            })
+        }
+    )
+}
+
+function getQueueError(ticket_id) {
+    it('test get /api/queue/:id', async () => {
+            await agent.get('/api/queue/' + `${ticket_id}`)
+                .then(function (res) {
+                    res.should.have.status(500)
+                })
+        }
+    )
 }
