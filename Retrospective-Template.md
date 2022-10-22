@@ -35,9 +35,9 @@ RETROSPECTIVE (Team 7)
 
   Hours per task average:
 
-  - ** ~ 1h 50m (estimated)** 
+  - **\~1h 50m (estimated)** 
 
-  - ** ~ 2h 22m (actual)**
+  - **\~2h 22m (actual)**
 
   Standard deviation:
 
