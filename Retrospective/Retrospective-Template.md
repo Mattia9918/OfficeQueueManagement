@@ -99,5 +99,5 @@ RETROSPECTIVE (Team 7)
  
 
 - One thing you are proud of as a Team!!
-
-  We get along and we laugh a lot!
+  - We discussed the organizational problems from the start, in a constructive way 
+  - We get along and we laugh a lot!
