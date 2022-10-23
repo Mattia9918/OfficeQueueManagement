@@ -76,10 +76,11 @@ RETROSPECTIVE (Team 7)
 
 - What lessons did you learn (both positive and negative) in this sprint?
 
-  - Initial planning needs more effort, especially in the setup and in the division of tasks, to be more efficient during the development
   - It's important to start setting up everything needed to work as soon as possible
+  - Initial planning needs more effort, especially in the setup and in the division of tasks, to be more efficient during the development
   - To react positively to the organizational problems
   - Meeting both in person and in remote helps to work better
+  - Solving interaction problems between different stories, and between different parts of the code takes time
   - The organization of the demo requires more committment
 
 - Which improvement goals set in the previous retrospective were you able to achieve? 
@@ -94,10 +95,10 @@ RETROSPECTIVE (Team 7)
   - **Immediate setup**: set up should be done at most in the first 2 days of sprint
   - **Better subdivision of the initial planning**: create cross-cutting tasks for initial planning, also including: GUI mockup, APIs definition (resources involved, URIs, requests and all the possible responses), test planning.
   - **Closer team meetings over time**: at the end of each team meeting, always define the date and time of the next one
+  - **Consider a realignment phase within stories**: include a cross-cutting task (or a task per story) for connecting, aligning and uniforming the different committed stories (manage interaction and navigation problems between interfaces, solve connection problems with APIs etc...)
   - **Better planning of the testing phase**: add tasks for Unit testing, E2E testing and code review 
   - **Organize the demo**: Add a task to work on the demo presentation
  
 
 - One thing you are proud of as a Team!!
-
-  We get along and we laugh a lot! :)
+We get along and we laugh a lot! :)
