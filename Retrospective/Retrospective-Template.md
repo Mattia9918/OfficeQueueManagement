@@ -92,7 +92,7 @@ RETROSPECTIVE (Team 7)
 
 - Improvement goals for the next sprint and how to achieve them (technical tasks, team coordination, etc.)
   - **Immediate setup**: set up should be done at most in the first 2 days of sprint
-  - **Better subdivision of the initial planning**: create cross-cutting tasks for initial planning, also including: GUI mockup, APIs definition (resources involved, URIs, requests and all the possible responses), test planning.
+  - **Better subdivision of the initial planning**: create cross-cutting tasks for initial planning, also including: GUI mockup, APIs definition (resources involved, URIs, requests and all the possible responses), test planning (which kind of tests to write, which libraries to use).
   - **Closer team meetings over time**: at the end of each team meeting, always define the date and time of the next one
   - **Better planning of the testing phase**: add tasks for Unit testing, E2E testing and code review 
   - **Organize the demo**: Add a task to work on the demo presentation
