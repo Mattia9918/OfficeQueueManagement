@@ -55,7 +55,7 @@ RETROSPECTIVE (Team 7)
 - Unit Testing:
   - Total hours estimated 
   - Total hours spent
-  - Nr of automated unit test cases 
+  - Nr of automated unit test cases: **4** 
   - Coverage (if available)
 - E2E testing:
   - Total hours estimated
@@ -65,22 +65,22 @@ RETROSPECTIVE (Team 7)
   - Total hours spent
   
 
-*We did not add specific tasks for Unit Testing, E2E testing and Code review because we thought it was included in To Verify phase.*
+*We did not add specific tasks for Unit Testing, E2E testing and Code review because we thought it was included in the "To Verify" phase.*
 
 
 ## ASSESSMENT
 
 - What caused your errors in estimation (if any)?
 
-  Errors in estimation was caused by lack of experience, misunderstanding of task planning and non optimal division of tasks.
+  Errors in estimation were caused by lack of experience, misunderstanding of task planning phase and non optimal division of tasks.
 
 - What lessons did you learn (both positive and negative) in this sprint?
 
   - Initial planning needs more effort, especially in the setup and in the division of tasks, to be more efficient during the development
-  - React positively to the organizational problems
-  - Meeting both in person and in remote helps to work better
   - It's important to start setting up everything needed to work as soon as possible
-  - The organization of the demo is fundamental
+  - To react positively to the organizational problems
+  - Meeting both in person and in remote helps to work better
+  - The organization of the demo requires more committment
 
 - Which improvement goals set in the previous retrospective were you able to achieve? 
 
@@ -91,10 +91,12 @@ RETROSPECTIVE (Team 7)
 ​		-
 
 - Improvement goals for the next sprint and how to achieve them (technical tasks, team coordination, etc.)
-  - Add a task to work on the demo presentation
-  - Create cross-cutting tasks for initial planning including: GUI mockup and  definition, APIs definition
-  - Add tasks for Unit testing, E2E testing and code review 
-  - Set up should be done at most in the first 2 days of sprint
+  - **Immediate setup**: set up should be done at most in the first 2 days of sprint
+  - **Better subdivision of the initial planning**: create cross-cutting tasks for initial planning, also including: GUI mockup, APIs definition (resources involved, URIs, requests and all the possible responses), test planning.
+  - **Closer team meetings over time**: at the end of each team meeting, always define the date and time of the next one
+  - **Better planning of the testing phase**: add tasks for Unit testing, E2E testing and code review 
+  - **Organize the demo**: Add a task to work on the demo presentation
+ 
 
 - One thing you are proud of as a Team!!
 
